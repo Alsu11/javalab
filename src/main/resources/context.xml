@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-be..
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-..">
+
+    <context:property-placeholder location="application.properties"/>
 
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <property name="jdbcUrl" value="${db.url}"/>
@@ -22,6 +28,5 @@
     <bean id="signUpService" class="ru.itis.SignUpService">
         <constructor-arg name="passwordBlackList" ref="passwordBlackList"/>
     </bean>
-
 
 </beans>
