@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class PasswordBlackListDateBaseImpl implements PasswordBlackList {
     //language=SQL
-    public static final String SQL_SELECT_PASSWORD = "select bad_password from password_blake_list where bad_password = ?";
+    public static final String SQL_SELECT_PASSWORD = "SELECT bad_password FROM bad_passwords WHERE bad_password=?";
 
     private JdbcTemplate jdbcTemplate;
 
@@ -29,7 +29,7 @@ public class PasswordBlackListDateBaseImpl implements PasswordBlackList {
     @Override
     public boolean contains(String password) {
         try {
-            Optional<Password> pass = Optional.of(Objects.requireNonNull(jdbcTemplate.queryForObject(SQL_SELECT_PASSWORD, passwordRowMapper, password)));
+            Optional.of(Objects.requireNonNull(jdbcTemplate.queryForObject(SQL_SELECT_PASSWORD, passwordRowMapper, password)));
             return false;
         } catch (EmptyResultDataAccessException e) {
             return true;

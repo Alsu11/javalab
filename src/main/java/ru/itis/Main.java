@@ -31,7 +31,7 @@ public class Main {
 
         SignUpService service = new SignUpService(passwordBlackList);
 
-        //System.out.println(passwordBlackList.contains("alsu1222"));
+        System.out.println(passwordBlackList.contains("alsu1222"));
 
     }
 
